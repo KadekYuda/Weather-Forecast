@@ -13,29 +13,33 @@ Made by: I Kadek Yuda Budipratama Giri / 13516115
 
 ```
 weatherforecast
-|__weatherService
-|  |__ Weather.java
-|  |__ WeatherService.java
-|
 |__weatherservice
+|  |__ OpenWeatherClient.java
+|
+|__weatherdisplay
 |  |__ DisplayFrame.java
-|  |__ DisplayPanel.java
-|__Main.java
-```
-### Checklist Package
+|  |__ ResultPanel.java
+|
+|__weathermodel
+   |__ CurrentWeaherData.java
+   |__ Detail.java
+   |__ ForecastData.java
+   |__ Response.java
+   |__ Weather.java
+   |__ WeatherForecastResult.java
+   |__ WeatherSearchResult.java
+   |__ Wind.java
 
-| Package | Nama File | Implemented | Tested |
-|---|---|---|---|
-| weatherservice | Weather.java | [X] | [-] |
-| weatherservice | WeatherService.java | [X] | [X] |
-| weatherdisplay | DisplayFrame.java | [-] | [-] |
-| weatherdisplay | DisplayPanel.java | [-] | [-] |
-| - | Main.java | [-] | [-] |
+```
+
+
 
 ### Checklist
 
-- [ ] Melengkapkan kelas WeatherService untuk bisa mengembalikan lokasi kota
-- [ ] Membuat fitur pencarian kota
-- [ ] Handling kasus jika tidak ada kota
-- [ ] Mengubah metode getString menjadi optString pada kelas WeatherService
-- [ ] Menmbuat tampilan depan
+- [X] Melengkapkan kelas WeatherService untuk bisa mengembalikan lokasi kota
+- [X] Membuat fitur pencarian kota
+- [X] Handling kasus jika tidak ada kota
+- [X] Mengubah metode getString menjadi optString pada kelas WeatherService
+- [X] Menmbuat rancangan tampilan depan
+- [ ] Menyatukan GUI dengan OpenWeatherClient
+- [ ] Melengkapi testing untuk weathermodel
