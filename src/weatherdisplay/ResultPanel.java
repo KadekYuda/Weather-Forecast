@@ -5,7 +5,12 @@
  */
 package weatherdisplay;
 
+import java.awt.GridBagConstraints;
+import java.util.ArrayList;
+import javax.swing.JPanel;
 import weathermodel.CurrentWeatherData;
+import weathermodel.ForecastData;
+import weathermodel.WeatherForecastResult;
 
 /**
  *
@@ -16,9 +21,10 @@ public class ResultPanel extends javax.swing.JPanel {
   /**
    * Creates new form ResultPanel
    */
-  public ResultPanel(CurrentWeatherData data) {
+  public ResultPanel(CurrentWeatherData data, DisplayFrame weatherFrame) {
     initComponents();
     this.data = data;
+    this.weatherFrame = weatherFrame;
     countryLabel.setText(data.getCityName() + ", " + data.getCityCountry());
     latLabel.setText("Lat: " + Double.toString(data.getLat()));
     lonLabel.setText("Lon: " + Double.toString(data.getLon()));
@@ -91,9 +97,22 @@ public class ResultPanel extends javax.swing.JPanel {
 
   private void forecastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forecastButtonActionPerformed
     // TODO bikin button yang nampilin hasil forecast ke panel sebelah
+    int cityID = data.getCityId();
+    WeatherForecastResult forecastResult = weatherFrame.client.getForecast(cityID);
+    ArrayList<ForecastData> forecastList = forecastResult.getForecastList();
+    JPanel forecastListPanel  = weatherFrame.getForecastListPanel();
+    forecastListPanel.removeAll();
+    for (ForecastData forecast: forecastList) {
+      ForecastPanel forecastPanel = new ForecastPanel(forecast);
+      forecastListPanel.add(forecastPanel);
+    }
+    forecastListPanel.repaint();
+    forecastListPanel.revalidate();
+    
   }//GEN-LAST:event_forecastButtonActionPerformed
-
+  
   private CurrentWeatherData data;
+  private DisplayFrame weatherFrame;
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel countryLabel;
   private javax.swing.JButton forecastButton;
