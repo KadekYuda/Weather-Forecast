@@ -126,12 +126,11 @@ public class OpenWeatherClient {
   }
 
   /**
-   * Get search for a city.
-   * @param location location of the city.
-   * @return
-   * @throws JSONException 
+   * Get search for some city.
+   * @param location name of the city.
+   * @return a set of city names in WeatherSearchResult. 
    */
-  public WeatherSearchResult getSearch(String location) throws  JSONException {
+  public WeatherSearchResult getSearch(String location) {
     try {
       JSONObject searchJson = getSearchJson(location);
       //System.out.println(searchJson.toString());

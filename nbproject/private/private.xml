@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Seleksi%20Labpro/Weather%20Forecast/src/weatherdisplay/ResultPanel.java</file>
-            <file>file:/D:/Seleksi%20Labpro/Weather%20Forecast/src/weatherdisplay/ForecastPanel.java</file>
-            <file>file:/D:/Seleksi%20Labpro/Weather%20Forecast/src/weatherdisplay/DisplayFrame.java</file>
-            <file>file:/D:/Seleksi%20Labpro/Weather%20Forecast/src/weathermodel/CurrentWeatherData.java</file>
-            <file>file:/D:/Seleksi%20Labpro/Weather%20Forecast/src/util/Formatter.java</file>
-            <file>file:/D:/Seleksi%20Labpro/Weather%20Forecast/src/util/Utilities.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

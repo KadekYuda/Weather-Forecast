@@ -70,4 +70,13 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
+         classpath="lib/checkstyle-8.11-all.jar"/>
+         <target name="checkstyle">
+             <checkstyle config="google_checks.xml">
+                 <fileset dir="src/" includes="**/*.java" />
+                 <formatter type="plain"></formatter>
+                 <formatter type="xml" toFile="build/checkstyle_errors.xml"></formatter>
+             </checkstyle>
+         </target>
 </project>

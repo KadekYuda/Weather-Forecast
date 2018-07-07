@@ -2,6 +2,11 @@ package weathermodel;
 
 import org.json.JSONObject;
 
+
+/**
+ * A data structure containing current weather data at a city.
+ * @author yudai
+ */
 public class CurrentWeatherData {
 
   private static final String DETAIL = "main";
@@ -54,7 +59,11 @@ public class CurrentWeatherData {
       return lon;
     }
   }
-
+  
+  /**
+   * Create a data of current weather according JSON format from OpenWeatherClient.
+   * @param json JSON from OpenWeatherMap
+   */
   public CurrentWeatherData(JSONObject json) {
     coordinates = new Coordinates(json.optJSONObject(COORD));
     detail = new Detail(json.optJSONObject(DETAIL));

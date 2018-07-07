@@ -1,10 +1,14 @@
 package weathermodel;
 
+import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
+/**
+ * Return a set of CurrentWeatherData for search purpose.
+ * @author yudai
+ */
 public class WeatherSearchResult extends Response {
 
   private static final String LIST = "list";
@@ -12,6 +16,10 @@ public class WeatherSearchResult extends Response {
 
   private ArrayList<CurrentWeatherData> cityWeatherSearchResult;
 
+  /**
+   * Creates weatherSearchResult data from JSON from OpenWeatherClient.
+   * @param json JSON data from weatherDataClient
+   */
   public WeatherSearchResult(JSONObject json) {
     super(json);
     int count = json.optInt(COUNT);

@@ -2,6 +2,10 @@ package weathermodel;
 
 import org.json.JSONObject;
 
+/**
+ * Information about temperature and humidity.
+ * @author yudai
+ */
 public class Detail {
   private static final String TEMP = "temp";
   private static final String TEMP_MIN = "temp_min";
@@ -13,6 +17,10 @@ public class Detail {
   private double tempMax;
   private int humidity;
 
+  /**
+   * Creates Detail data from JSON data from OpenWeatherClient.
+   * @param json JSON data from Open Weather Map
+   */
   public Detail(JSONObject json) {
     temp = json.optDouble(TEMP, Double.NaN);
     tempMin = json.optDouble(TEMP_MIN, Double.NaN);
