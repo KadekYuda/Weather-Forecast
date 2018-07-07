@@ -2,6 +2,15 @@
 
 Made by: I Kadek Yuda Budipratama Giri / 13516115
 
+## Build
+1. Install Ant
+2. Masuk ke directory project
+2. Untuk melakukan checkstyle, masukkan perintah berikut ke dalam command prompt/terminal
+```
+ant checkstyle
+```
+
+
 ## API
 **API (Application Programming Interface)** adalah sekumpulan alat-alat yang memudahkan pengembangan sebuah software dengan menyediakan fitur-fitur yang memudahkan pengembangan aplikasi dengan menyediakan berbagai fungsi, prosedur, serta alat-alat yang dapat berinteraksi dengan aplikasi yang menggunakan layanan tersebut. Tujuan penggunaan API adalah untuk menggunakan suatu fitur tanpa harus mengimplementasikan kembali fitur tersebut ke dalam kode, karena hal tersebut beresiko terjadi kesalahan dan *bug* serta terkesan mengulangi implementasi kode kode yang sudah ada. Selain itu, penggunaan API akan mempermudah pengembangan aplikasi karena pengembang aplikasi tidak perlu lagi mengimplementasikan fitur yang dibutuhkan.
 
@@ -37,8 +46,6 @@ weatherforecast
 
 ```
 
-
-
 ### Checklist
 
 - [X] Melengkapkan kelas WeatherService untuk bisa mengembalikan lokasi kota
@@ -47,4 +54,7 @@ weatherforecast
 - [X] Mengubah metode getString menjadi optString pada kelas WeatherService
 - [X] Menmbuat rancangan tampilan depan
 - [X] Menyatukan GUI dengan OpenWeatherClient
+- [X] Memeriksa standar kode dengan checkstyle
+- [X] Membuat dokumentasi
+- [ ] Melakukan tes JDepend
 - [ ] Melengkapi testing untuk weathermodel
