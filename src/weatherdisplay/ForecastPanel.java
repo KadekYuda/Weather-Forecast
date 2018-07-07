@@ -5,6 +5,10 @@
  */
 package weatherdisplay;
 
+import util.Utilities;
+
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import util.Formatter;
 import weathermodel.ForecastData;
@@ -14,7 +18,7 @@ import weathermodel.ForecastData;
  * @author yudai
  */
 public class ForecastPanel extends javax.swing.JPanel {
-
+  
   /**
    * Creates new form ForecastPanel
    */
@@ -28,7 +32,10 @@ public class ForecastPanel extends javax.swing.JPanel {
     humidityLabel.setText(Formatter.toPercent(String.valueOf(forecast.getHumidity())));
     cloudinessLabel.setText(Formatter.toPercent(String.valueOf(forecast.getCloudiness())));
     windSpeedLabel.setText(Formatter.toMPS(String.valueOf(forecast.getWindSpeed())));
-    windDirectionLabel.setText(Formatter.toDegree(String.valueOf(forecast.getWindDeg())));
+    windDirectionLabel.setText(Utilities.convertToCompas(forecast.getWindDeg()));
+    String imagePath = "res/"+Formatter.toPng(forecast.getIcon());
+    ImageIcon icon = Utilities.getImageIcon(imagePath, 50, 50);
+    weatherIcon.setIcon(icon);
   }
 
   /**
@@ -46,9 +53,15 @@ public class ForecastPanel extends javax.swing.JPanel {
     minTempLabel = new javax.swing.JLabel();
     humidityLabel = new javax.swing.JLabel();
     cloudinessLabel = new javax.swing.JLabel();
-    windLabel = new javax.swing.JLabel();
     windSpeedLabel = new javax.swing.JLabel();
     windDirectionLabel = new javax.swing.JLabel();
+    jLabel1 = new javax.swing.JLabel();
+    jLabel2 = new javax.swing.JLabel();
+    jLabel3 = new javax.swing.JLabel();
+    jLabel4 = new javax.swing.JLabel();
+    jLabel5 = new javax.swing.JLabel();
+    jLabel6 = new javax.swing.JLabel();
+    weatherIcon = new javax.swing.JLabel();
 
     setBorder(javax.swing.BorderFactory.createEtchedBorder());
     setPreferredSize(new java.awt.Dimension(190, 360));
@@ -57,28 +70,46 @@ public class ForecastPanel extends javax.swing.JPanel {
     dateTimeLabel.setText("2018-01-01-18:00:00");
 
     weatherDetailLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+    weatherDetailLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     weatherDetailLabel.setText("Cuaca");
 
     maxTempLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    maxTempLabel.setText("Max. Temp: 30 C");
+    maxTempLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
     minTempLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    minTempLabel.setText("Min. Temp : 29 C");
+    minTempLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
     humidityLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    humidityLabel.setText("Humidity: 100%");
+    humidityLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+    humidityLabel.setPreferredSize(new java.awt.Dimension(30, 19));
 
     cloudinessLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    cloudinessLabel.setText("Cloudiness: 100%");
-
-    windLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-    windLabel.setText("Wind");
+    cloudinessLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+    cloudinessLabel.setPreferredSize(new java.awt.Dimension(30, 19));
 
     windSpeedLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    windSpeedLabel.setText("Speed: 30.5005 m/s");
+    windSpeedLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+    windSpeedLabel.setPreferredSize(new java.awt.Dimension(30, 19));
 
     windDirectionLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    windDirectionLabel.setText("Direction: SE");
+    windDirectionLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+    windDirectionLabel.setPreferredSize(new java.awt.Dimension(30, 19));
+
+    jLabel1.setText("Max. Temp");
+
+    jLabel2.setText("Min. Temp");
+
+    jLabel3.setText("Humidity");
+
+    jLabel4.setText("Cloudiness");
+
+    jLabel5.setText("Wind Speed");
+
+    jLabel6.setText("Wind Direction");
+
+    weatherIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    weatherIcon.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+    weatherIcon.setPreferredSize(new java.awt.Dimension(50, 50));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
@@ -87,54 +118,82 @@ public class ForecastPanel extends javax.swing.JPanel {
       .addGroup(layout.createSequentialGroup()
         .addContainerGap()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(dateTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-          .addComponent(maxTempLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(humidityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(minTempLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(windDirectionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(windSpeedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(cloudinessLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(dateTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
           .addComponent(weatherDetailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
           .addGroup(layout.createSequentialGroup()
-            .addComponent(windLabel)
-            .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(jLabel6)
+              .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(windDirectionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(windSpeedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(cloudinessLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(humidityLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(minTempLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(maxTempLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        .addContainerGap())
+      .addGroup(layout.createSequentialGroup()
+        .addGap(70, 70, 70)
+        .addComponent(weatherIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addContainerGap())
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(dateTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(6, 6, 6)
+        .addComponent(dateTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addComponent(weatherDetailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(weatherDetailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(weatherIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(maxTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(maxTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(jLabel1))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(minTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel2)
+          .addComponent(minTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(humidityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel3)
+          .addComponent(humidityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(cloudinessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
-        .addComponent(windLabel)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel4)
+          .addComponent(cloudinessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(windSpeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel5)
+          .addComponent(windSpeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(windDirectionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(23, Short.MAX_VALUE))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel6)
+          .addComponent(windDirectionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
     );
   }// </editor-fold>//GEN-END:initComponents
-
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel cloudinessLabel;
   private javax.swing.JLabel dateTimeLabel;
   private javax.swing.JLabel humidityLabel;
+  private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel2;
+  private javax.swing.JLabel jLabel3;
+  private javax.swing.JLabel jLabel4;
+  private javax.swing.JLabel jLabel5;
+  private javax.swing.JLabel jLabel6;
   private javax.swing.JLabel maxTempLabel;
   private javax.swing.JLabel minTempLabel;
   private javax.swing.JLabel weatherDetailLabel;
+  private javax.swing.JLabel weatherIcon;
   private javax.swing.JLabel windDirectionLabel;
-  private javax.swing.JLabel windLabel;
   private javax.swing.JLabel windSpeedLabel;
   // End of variables declaration//GEN-END:variables
 }

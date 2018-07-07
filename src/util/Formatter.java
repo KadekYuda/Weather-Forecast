@@ -13,15 +13,15 @@ public class Formatter {
   public final static String DEGREE  = "\u00b0";
   
   public static String toDegree(String str) {
-    return str+DEGREE;
+    return str + DEGREE;
   }
   
   public static String toCelcius(String str) {   
-     return str+" "+DEGREE+"C";
+     return str + " " + DEGREE + "C";
   }
   
   public static String toPercent(String str) {
-    return str+" %";
+    return str + " %";
   }
   
   public static String capitalizeFully(String str) {
@@ -43,6 +43,14 @@ public class Formatter {
   }
   
   public static String toMPS(String str) {
-    return str+" m/s";
+    return str + " m/s";
+  }
+  
+  public static String toPng(String str) {
+    return str + ".png";
+  }
+  
+  public static String getCityCountry(String city, String country) {
+    return city + ", " + country;
   }
 }

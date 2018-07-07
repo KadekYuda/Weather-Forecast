@@ -8,6 +8,7 @@ package weatherdisplay;
 import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import util.Formatter;
 import weathermodel.CurrentWeatherData;
 import weathermodel.ForecastData;
 import weathermodel.WeatherForecastResult;
@@ -25,7 +26,7 @@ public class ResultPanel extends javax.swing.JPanel {
     initComponents();
     this.data = data;
     this.weatherFrame = weatherFrame;
-    countryLabel.setText(data.getCityName() + ", " + data.getCityCountry());
+    countryLabel.setText(Formatter.getCityCountry(data.getCityName(), data.getCityCountry()));
     latLabel.setText("Lat: " + Double.toString(data.getLat()));
     lonLabel.setText("Lon: " + Double.toString(data.getLon()));
   }
@@ -96,7 +97,6 @@ public class ResultPanel extends javax.swing.JPanel {
   }// </editor-fold>//GEN-END:initComponents
 
   private void forecastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forecastButtonActionPerformed
-    // TODO bikin button yang nampilin hasil forecast ke panel sebelah
     int cityID = data.getCityId();
     WeatherForecastResult forecastResult = weatherFrame.client.getForecast(cityID);
     ArrayList<ForecastData> forecastList = forecastResult.getForecastList();
@@ -108,7 +108,8 @@ public class ResultPanel extends javax.swing.JPanel {
     }
     forecastListPanel.repaint();
     forecastListPanel.revalidate();
-    
+    // TODO: tampilin data current weather ke currentWeatherPanel
+    weatherFrame.setCurrentWeatherPanel(data);
   }//GEN-LAST:event_forecastButtonActionPerformed
   
   private CurrentWeatherData data;

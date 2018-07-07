@@ -13,6 +13,11 @@ Made by: I Kadek Yuda Budipratama Giri / 13516115
 
 ```
 weatherforecast
+|
+|__util
+|  |__ Formatter.java
+|  |__ Utilities.java
+|
 |__weatherservice
 |  |__ OpenWeatherClient.java
 |
@@ -41,5 +46,5 @@ weatherforecast
 - [X] Handling kasus jika tidak ada kota
 - [X] Mengubah metode getString menjadi optString pada kelas WeatherService
 - [X] Menmbuat rancangan tampilan depan
-- [ ] Menyatukan GUI dengan OpenWeatherClient
+- [X] Menyatukan GUI dengan OpenWeatherClient
 - [ ] Melengkapi testing untuk weathermodel

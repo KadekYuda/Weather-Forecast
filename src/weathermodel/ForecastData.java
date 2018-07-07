@@ -107,4 +107,8 @@ public class ForecastData {
   public double getSnow() {
     return snow;
   }
+  
+  public String getIcon() {
+    return weather.getIcon();
+  }
 }
