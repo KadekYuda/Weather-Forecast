@@ -451,7 +451,7 @@ public class DisplayFrame extends javax.swing.JFrame {
     String imagePath = "res/" + Formatter.toPng(current.getWeatherIcon());
     cityLabel.setText(Formatter.getCityCountry(current.getCityName(), current.getCityCountry()));
     weatherDetailLabel.setText(Formatter.capitalizeFully(current.getWeatherDetails()));
-    ImageIcon icon = Utilities.getImageIcon(imagePath, 256, 256);
+    ImageIcon icon = Utilities.getImageIcon(imagePath, 240, 240);
     weatherIcon.setIcon(icon);
     currentWeatherPanel.repaint();
     currentWeatherPanel.revalidate();

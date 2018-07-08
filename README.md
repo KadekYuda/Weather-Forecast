@@ -5,7 +5,7 @@ Made by: I Kadek Yuda Budipratama Giri / 13516115
 ## Build
 1. Install Ant
 2. Masuk ke directory project
-2. Untuk melakukan checkstyle, masukkan perintah berikut ke dalam command prompt/terminal
+3. Untuk melakukan checkstyle, masukkan perintah berikut ke dalam command prompt/terminal
 ```
 ant checkstyle
 ```
@@ -56,5 +56,5 @@ weatherforecast
 - [X] Menyatukan GUI dengan OpenWeatherClient
 - [X] Memeriksa standar kode dengan checkstyle
 - [X] Membuat dokumentasi
-- [ ] Melakukan tes JDepend
-- [ ] Melengkapi testing untuk weathermodel
+- [X] Melakukan tes JDepend
+- [X] Melengkapi testing untuk weathermodel

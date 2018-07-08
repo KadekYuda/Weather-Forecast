@@ -32,7 +32,7 @@ public class ForecastPanel extends javax.swing.JPanel {
     cloudinessLabel.setText(Formatter.toPercent(String.valueOf(forecast.getCloudiness())));
     windSpeedLabel.setText(Formatter.toMps(String.valueOf(forecast.getWindSpeed())));
     windDirectionLabel.setText(Utilities.convertToCompass(forecast.getWindDeg()));
-    String imagePath = "res/" + Formatter.toPng(forecast.getIcon());
+    String imagePath = "res/" + Formatter.toPng(forecast.getWeatherIcon());
     ImageIcon icon = Utilities.getImageIcon(imagePath, 50, 50);
     weatherIcon.setIcon(icon);
   }
