@@ -1,0 +1,205 @@
+
+--------------------------------------------------
+- Package: java.awt
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.awt.event
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.io
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.lang
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.net
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.util
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: javax.swing
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: org.json
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: util
+--------------------------------------------------
+
+Stats:
+    Total Classes: 2
+    Concrete Classes: 2
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 3
+
+    A: 0
+    I: 0.75
+    D: 0.25
+
+Abstract Classes:
+
+Concrete Classes:
+    util.Formatter
+    util.Utilities
+
+Depends Upon:
+    java.awt
+    java.lang
+    javax.swing
+
+Used By:
+    weatherdisplay
+
+--------------------------------------------------
+- Package: weatherdisplay
+--------------------------------------------------
+
+Stats:
+    Total Classes: 5
+    Concrete Classes: 5
+    Abstract Classes: 0
+
+    Ca: 0
+    Ce: 8
+
+    A: 0
+    I: 1
+    D: 0
+
+Abstract Classes:
+
+Concrete Classes:
+    weatherdisplay.DisplayFrame$1
+    weatherdisplay.DisplayFrame$2
+    weatherdisplay.ForecastPanel
+    weatherdisplay.ResultPanel
+    weatherdisplay.ResultPanel$1
+
+Depends Upon:
+    java.awt
+    java.awt.event
+    java.lang
+    java.util
+    javax.swing
+    util
+    weathermodel
+    weatherservice
+
+Used By:
+    Not used by any packages.
+
+--------------------------------------------------
+- Package: weathermodel
+--------------------------------------------------
+
+Stats:
+    Total Classes: 12
+    Concrete Classes: 12
+    Abstract Classes: 0
+
+    Ca: 2
+    Ce: 3
+
+    A: 0
+    I: 0.6
+    D: 0.4
+
+Abstract Classes:
+
+Concrete Classes:
+    weathermodel.CurrentWeatherData
+    weathermodel.CurrentWeatherData$Coordinates
+    weathermodel.Detail
+    weathermodel.ForecastData
+    weathermodel.Response
+    weathermodel.Weather
+    weathermodel.WeatherForecastResult
+    weathermodel.WeatherForecastResult$1
+    weathermodel.WeatherForecastResult$2
+    weathermodel.WeatherForecastResult$City
+    weathermodel.WeatherSearchResult
+    weathermodel.Wind
+
+Depends Upon:
+    java.lang
+    java.util
+    org.json
+
+Used By:
+    weatherdisplay
+    weatherservice
+
+--------------------------------------------------
+- Package: weatherservice
+--------------------------------------------------
+
+Stats:
+    Total Classes: 1
+    Concrete Classes: 1
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 5
+
+    A: 0
+    I: 0.83
+    D: 0.17
+
+Abstract Classes:
+
+Concrete Classes:
+    weatherservice.OpenWeatherClient
+
+Depends Upon:
+    java.io
+    java.lang
+    java.net
+    org.json
+    weathermodel
+
+Used By:
+    weatherdisplay
+
+
+--------------------------------------------------
+- Package Dependency Cycles:
+--------------------------------------------------
+
+
+--------------------------------------------------
+- Summary:
+--------------------------------------------------
+
+Name, Class Count, Abstract Class Count, Ca, Ce, A, I, D, V:
+
+java.awt,0,0,2,0,0,0,1,1
+java.awt.event,0,0,1,0,0,0,1,1
+java.io,0,0,1,0,0,0,1,1
+java.lang,0,0,4,0,0,0,1,1
+java.net,0,0,1,0,0,0,1,1
+java.util,0,0,2,0,0,0,1,1
+javax.swing,0,0,2,0,0,0,1,1
+org.json,0,0,2,0,0,0,1,1
+util,2,0,1,3,0,0.75,0.25,1
+weatherdisplay,5,0,0,8,0,1,0,1
+weathermodel,12,0,2,3,0,0.6,0.4,1
+weatherservice,1,0,1,5,0,0.83,0.17,1

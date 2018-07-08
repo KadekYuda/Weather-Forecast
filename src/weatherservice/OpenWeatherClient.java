@@ -2,11 +2,9 @@ package weatherservice;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import weathermodel.WeatherForecastResult;
@@ -57,7 +55,6 @@ public class OpenWeatherClient {
         rd.close();
       }
     } catch (UnknownHostException e) {
-      e.getStackTrace();
       JSONObject response = new JSONObject();
       response.put("cod", 503);
       response.put("message", "Service Unavailable");
@@ -66,7 +63,7 @@ public class OpenWeatherClient {
       JSONObject response = new JSONObject();
       response.put("cod", 500);
       response.put("message", "Internal Server Error");
-      e.printStackTrace();
+      return response;
     }
     return new JSONObject(result.toString());
   }
@@ -105,7 +102,7 @@ public class OpenWeatherClient {
       JSONObject response = new JSONObject();
       response.put("cod", 500);
       response.put("message", "Internal Server Error");
-      e.printStackTrace();
+      return response;
     }
     return new JSONObject(result.toString());
   }
@@ -118,7 +115,6 @@ public class OpenWeatherClient {
   public WeatherForecastResult getForecast(int id) {
     try {
       JSONObject weatherJson = getForecastJson(id);
-      //System.out.println(weatherJson.toString());
       return new WeatherForecastResult(weatherJson);
     } catch (Exception e) {
       return new WeatherForecastResult(null);
@@ -128,12 +124,11 @@ public class OpenWeatherClient {
   /**
    * Get search for some city.
    * @param location name of the city.
-   * @return a set of city names in WeatherSearchResult. 
+   * @return a set of city names in WeatherSearchResult.
    */
   public WeatherSearchResult getSearch(String location) {
     try {
       JSONObject searchJson = getSearchJson(location);
-      //System.out.println(searchJson.toString());
       return new WeatherSearchResult(searchJson);
     } catch (Exception e) {
       return new WeatherSearchResult(null);

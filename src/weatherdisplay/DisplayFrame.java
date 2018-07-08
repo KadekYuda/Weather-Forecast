@@ -10,6 +10,7 @@ import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import util.Formatter;
 import util.Utilities;
@@ -366,25 +367,34 @@ public class DisplayFrame extends javax.swing.JFrame {
   private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
     searchResultPanel.removeAll();
     WeatherSearchResult result = client.getSearch(searchField.getText());
-    ArrayList<CurrentWeatherData> resultData = result.getCityWeatherSearchResult();
-    int size = result.getCityWeatherSearchResult().size();
-    for (CurrentWeatherData data: resultData) {
-      // prettifying gbc
-      GridBagConstraints gbc = new GridBagConstraints();
-      gbc.gridx = 0;
-      gbc.weightx = 1.0;
-      gbc.anchor = GridBagConstraints.NORTH;
-      gbc.fill = GridBagConstraints.HORIZONTAL;
-      JPanel newPanel = new ResultPanel(data, this);
-      searchResultPanel.add(newPanel, gbc);
+    int statusCode = result.getStatusCode();
+    if (statusCode >= 200 && statusCode < 300) {
+      ArrayList<CurrentWeatherData> resultData = result.getCityWeatherSearchResult();
+      if (resultData.isEmpty()) {
+        JLabel newLabel = new JLabel("No result found");
+        searchResultPanel.add(newLabel);
+      } else {
+        for (CurrentWeatherData data: resultData) {
+          // prettifying gbc
+          GridBagConstraints gbc = new GridBagConstraints();
+          gbc.gridx = 0;
+          gbc.weightx = 1.0;
+          gbc.anchor = GridBagConstraints.NORTH;
+          gbc.fill = GridBagConstraints.HORIZONTAL;
+          JPanel newPanel = new ResultPanel(data, this);
+          searchResultPanel.add(newPanel, gbc);
+        }
+        // placing a blank label with certain gbc values to press search result to top.
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = resultData.size()-1;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        searchResultPanel.add(new JLabel(" "), gbc);
+      }
+    } else {
+      JOptionPane.showMessageDialog(this, result.getMessage());
     }
-    // placing a blank label with certain gbc values to press search result to top.
-    GridBagConstraints gbc = new GridBagConstraints();
-    gbc.gridx = 0;
-    gbc.gridy = size-1;
-    gbc.weightx = 1.0;
-    gbc.weighty = 1.0;
-    searchResultPanel.add(new JLabel(" "), gbc);
     searchResultPanel.repaint();
     searchResultPanel.revalidate();
   }//GEN-LAST:event_searchButtonActionPerformed

@@ -75,6 +75,7 @@
          <target name="checkstyle">
              <checkstyle config="google_checks.xml">
                  <fileset dir="src/" includes="**/*.java" />
+				 <fileset dir="test/" includes="**/*.java" />
                  <formatter type="plain"></formatter>
                  <formatter type="xml" toFile="build/checkstyle_errors.xml"></formatter>
              </checkstyle>

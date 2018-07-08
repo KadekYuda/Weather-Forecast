@@ -7,6 +7,7 @@
 package weatherdisplay;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import util.Formatter;
 import weathermodel.CurrentWeatherData;
@@ -104,16 +105,21 @@ public class ResultPanel extends javax.swing.JPanel {
   private void forecastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forecastButtonActionPerformed
     int cityId = data.getCityId();
     WeatherForecastResult forecastResult = weatherFrame.client.getForecast(cityId);
-    ArrayList<ForecastData> forecastList = forecastResult.getForecastList();
-    JPanel forecastListPanel  = weatherFrame.getForecastListPanel();
-    forecastListPanel.removeAll();
-    for (ForecastData forecast: forecastList) {
-      ForecastPanel forecastPanel = new ForecastPanel(forecast);
-      forecastListPanel.add(forecastPanel);
+    int statusCode = forecastResult.getStatusCode();
+    if (statusCode >= 200 && statusCode < 300) {
+      ArrayList<ForecastData> forecastList = forecastResult.getForecastList();
+      JPanel forecastListPanel  = weatherFrame.getForecastListPanel();
+      forecastListPanel.removeAll();
+      for (ForecastData forecast: forecastList) {
+        ForecastPanel forecastPanel = new ForecastPanel(forecast);
+        forecastListPanel.add(forecastPanel);
+      }
+      forecastListPanel.repaint();
+      forecastListPanel.revalidate();
+      weatherFrame.setCurrentWeatherPanel(data);
+    } else {
+      JOptionPane.showMessageDialog(weatherFrame, forecastResult.getMessage());
     }
-    forecastListPanel.repaint();
-    forecastListPanel.revalidate();
-    weatherFrame.setCurrentWeatherPanel(data);
   }//GEN-LAST:event_forecastButtonActionPerformed
 
   private CurrentWeatherData data;
