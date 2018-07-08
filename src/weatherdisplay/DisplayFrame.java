@@ -448,10 +448,11 @@ public class DisplayFrame extends javax.swing.JFrame {
     cloudinessLabel.setText(Formatter.toPercent(String.valueOf(current.getCloudiness())));
     windSpeedLabel.setText(Formatter.toMps(String.valueOf(current.getWindSpeed())));
     windDirectionLabel.setText(Utilities.convertToCompass(current.getWindDeg()));
-    String imagePath = "res/" + Formatter.toPng(current.getWeatherIcon());
+    String imagePath = Formatter.toPng(current.getWeatherIcon());
+    java.net.URL imgUrl = this.getClass().getClassLoader().getResource(imagePath);
     cityLabel.setText(Formatter.getCityCountry(current.getCityName(), current.getCityCountry()));
     weatherDetailLabel.setText(Formatter.capitalizeFully(current.getWeatherDetails()));
-    ImageIcon icon = Utilities.getImageIcon(imagePath, 240, 240);
+    ImageIcon icon = Utilities.getImageIcon(imgUrl, 240, 240);
     weatherIcon.setIcon(icon);
     currentWeatherPanel.repaint();
     currentWeatherPanel.revalidate();

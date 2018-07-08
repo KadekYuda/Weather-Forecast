@@ -5,11 +5,18 @@ Made by: I Kadek Yuda Budipratama Giri / 13516115
 ## Build
 1. Install Ant
 2. Masuk ke directory project
-3. Untuk melakukan checkstyle, masukkan perintah berikut ke dalam command prompt/terminal
+3. Untuk membuat file .jar yang dapat dijalankan, jalankan perintah berikut. File .jar akan berada pada file dist.
+```
+ant jar
+```
+4. Jalankan file dengan menjalankan perintah
+```
+java -jar dist\Weather_Forecast.jar
+```
+5. Untuk melakukan checkstyle, masukkan perintah berikut ke dalam command prompt/terminal.
 ```
 ant checkstyle
 ```
-
 
 ## API
 **API (Application Programming Interface)** adalah sekumpulan alat-alat yang memudahkan pengembangan sebuah software dengan menyediakan fitur-fitur yang memudahkan pengembangan aplikasi dengan menyediakan berbagai fungsi, prosedur, serta alat-alat yang dapat berinteraksi dengan aplikasi yang menggunakan layanan tersebut. Tujuan penggunaan API adalah untuk menggunakan suatu fitur tanpa harus mengimplementasikan kembali fitur tersebut ke dalam kode, karena hal tersebut beresiko terjadi kesalahan dan *bug* serta terkesan mengulangi implementasi kode kode yang sudah ada. Selain itu, penggunaan API akan mempermudah pengembangan aplikasi karena pengembang aplikasi tidak perlu lagi mengimplementasikan fitur yang dibutuhkan.
@@ -33,6 +40,7 @@ weatherforecast
 |__weatherdisplay
 |  |__ DisplayFrame.java
 |  |__ ResultPanel.java
+|  |__ ForecastPanel.java
 |
 |__weathermodel
    |__ CurrentWeaherData.java

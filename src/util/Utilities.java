@@ -7,6 +7,7 @@
 package util;
 
 import java.awt.Image;
+import java.net.URL;
 import javax.swing.ImageIcon;
 
 /**
@@ -17,15 +18,15 @@ public class Utilities {
   /**
    * List of wind directions in compass.
    */
-  private static String [] directions = {"North", 
-                                         "North-West", 
-                                         "West", 
-                                         "South-West", 
-                                         "South", 
-                                         "South-East", 
-                                         "East", 
+  private static String [] directions = {"North",
+                                         "North-West",
+                                         "West",
+                                         "South-West",
+                                         "South",
+                                         "South-East",
+                                         "East",
                                          "North-East" };
-  
+
   /**
    * Get image icon at specified size.
    * @param filePath file path of image
@@ -33,13 +34,13 @@ public class Utilities {
    * @param height desired image icon height
    * @return Image Icon ready to be used in JComponent
    */
-  public static ImageIcon getImageIcon(String filePath, int width, int height) {
+  public static ImageIcon getImageIcon(URL filePath, int width, int height) {
     ImageIcon icon = new ImageIcon(filePath);
     Image resizedIcon = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
     icon.setImage(resizedIcon);
     return icon;
   }
-  
+
   /**
    * Convert a degree value to compass direction.
    * @param deg degree value, ranged from 0 - 360. Could be NaN.
