@@ -16,7 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Testing for WeatherForecastResult data
+ * Testing for WeatherForecastResult data.
  * @author yudai
  */
 public class WeatherForecastResultTest {
