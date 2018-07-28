@@ -1,6 +1,8 @@
 # Weather-Forecast
 
-Made by: I Kadek Yuda Budipratama Giri / 13516115
+##### Made by: I Kadek Yuda Budipratama Giri / 13516115
+
+![ss](https://user-images.githubusercontent.com/23361335/43359563-6c6b6978-92ce-11e8-876c-89685e9e91ed.PNG)
 
 ## Build
 1. Install Ant
